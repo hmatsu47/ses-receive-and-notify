@@ -1,0 +1,21 @@
+{
+  "stage_slug": "code-generation",
+  "space": "default",
+  "intent": "260911-ses-slack-notify",
+  "selections": [
+    {
+      "kind": "learning",
+      "scope": "project",
+      "heading": "Code Style",
+      "source_heading": "Deviations",
+      "text": "CDK の設定値は CDK context（`-c`）ではなく環境変数（.env）で統一して渡す。`-c` は `cdk diff` で無視され synth/deploy/diff 間で値がずれるため、`infra` は `process.env` から読む。"
+    },
+    {
+      "kind": "learning",
+      "scope": "project",
+      "heading": "Code Style",
+      "source_heading": "Deviations",
+      "text": "TypeScript は `strict: true` を維持する。ただし AWS SDK v3 / CDK の型と衝突する場合に限り `exactOptionalPropertyTypes` は無効化してよい（strict より厳しいオプトインの取り下げであり品質目標の緩和ではない）。"
+    }
+  ]
+}

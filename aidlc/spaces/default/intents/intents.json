@@ -1,0 +1,9 @@
+[
+  {
+    "uuid": "01a08ed5-6e42-7b72-81e3-b585aad13ffe",
+    "slug": "ses-slack-notify",
+    "dirName": "260911-ses-slack-notify",
+    "scope": "ses-receive-notify",
+    "status": "complete"
+  }
+]

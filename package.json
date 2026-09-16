@@ -1,0 +1,44 @@
+{
+  "name": "ses-receive-and-notify",
+  "version": "0.1.0",
+  "description": "SES received mail -> S3 -> decode -> S3 -> Slack notification tool",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint \"{src,test,infra}/**/*.ts\"",
+    "lint:fix": "eslint \"{src,test,infra}/**/*.ts\" --fix",
+    "format": "prettier --check \"{src,test,infra}/**/*.ts\"",
+    "format:fix": "prettier --write \"{src,test,infra}/**/*.ts\"",
+    "test": "vitest run test/",
+    "test:watch": "vitest",
+    "cdk": "cdk"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.658.1",
+    "@aws-sdk/client-secrets-manager": "3.658.1",
+    "mailparser": "3.7.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.145",
+    "@types/mailparser": "3.4.5",
+    "@types/node": "20.16.10",
+    "@typescript-eslint/eslint-plugin": "7.18.0",
+    "@typescript-eslint/parser": "7.18.0",
+    "aws-cdk": "2.160.0",
+    "aws-cdk-lib": "2.160.0",
+    "aws-sdk-client-mock": "4.0.2",
+    "constructs": "10.3.0",
+    "eslint": "8.57.1",
+    "eslint-config-prettier": "9.1.0",
+    "esbuild": "0.24.0",
+    "prettier": "3.3.3",
+    "tsx": "4.19.1",
+    "typescript": "5.6.2",
+    "vitest": "2.1.1"
+  }
+}

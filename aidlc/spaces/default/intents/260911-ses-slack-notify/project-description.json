@@ -1,0 +1,1 @@
+"reference/requirements.mdに書かれたツールを作って: Amazon SESで指定ドメイン宛てメールを受信し、S3に格納されたメールの本文と添付ファイルをデコードして別のS3バケットに配置し、本文の概要と保存先S3リンクをSlackにWebhook通知するツール。Route53登録・SESドメイン検証は手動。対象ドメイン・外部リソース・Slack Webhook URLは.env経由で指定。"
