@@ -27,10 +27,7 @@ function toHeaders(parsed: ParsedMail): MailHeaders {
   // エンベロープ From は SES 保存の raw ヘッダでは Return-Path に相当することが多い。
   // mailparser は return-path を AddressObject として解釈するため、addressText で取り出す。
   const returnPath = parsed.headers.get('return-path') as
-    | AddressObject
-    | AddressObject[]
-    | string
-    | undefined;
+    AddressObject | AddressObject[] | string | undefined;
   const envelopeFrom =
     typeof returnPath === 'string'
       ? returnPath.trim().length > 0

@@ -56,8 +56,16 @@ describe('formatSlackPayload (FR3.2 / FR3.3 / FR3.4 / NFR3.8)', () => {
     const { text } = formatSlackPayload({
       ...base,
       attachmentReferences: [
-        { filename: 'report.pdf', bucket: 'decoded-bucket', key: 'decoded/.../attachments/01-report.pdf' },
-        { filename: 'image.png', bucket: 'decoded-bucket', key: 'decoded/.../attachments/02-image.png' },
+        {
+          filename: 'report.pdf',
+          bucket: 'decoded-bucket',
+          key: 'decoded/.../attachments/01-report.pdf',
+        },
+        {
+          filename: 'image.png',
+          bucket: 'decoded-bucket',
+          key: 'decoded/.../attachments/02-image.png',
+        },
       ],
     });
     expect(text).toContain('*Attachments:*');
@@ -75,9 +83,7 @@ describe('formatSlackPayload (FR3.2 / FR3.3 / FR3.4 / NFR3.8)', () => {
   it('添付ファイル名もサニタイズする (NFR3.8 injection 防止)', () => {
     const { text } = formatSlackPayload({
       ...base,
-      attachmentReferences: [
-        { filename: '<script>@channel.txt', bucket: 'b', key: 'k' },
-      ],
+      attachmentReferences: [{ filename: '<script>@channel.txt', bucket: 'b', key: 'k' }],
     });
     expect(text).not.toContain('<script>');
     expect(text).toContain('&lt;script&gt;');

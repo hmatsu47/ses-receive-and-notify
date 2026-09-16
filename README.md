@@ -4,7 +4,7 @@
 
 構成: **SES 受信 → 1st S3（原本保存）→ Lambda（デコード）→ 2nd S3（整理保管）→ Slack 通知**。
 
-- 実装: TypeScript / Node.js（AWS Lambda, Node.js 20 LTS）
+- 実装: TypeScript / Node.js（AWS Lambda, Node.js 22 LTS）
 - IaC: AWS CDK（TypeScript）
 
 ## ディレクトリ構成
@@ -90,7 +90,7 @@ npx cdk deploy
 CDK スタックが作成するもの:
 
 - 1st / 2nd S3 バケット（**自動命名**・SSE-S3 暗号化・パブリックアクセス全ブロック・TLS 強制）
-- デコード Lambda（Node.js 20、タイムアウト 60 秒 / メモリ 512MB、非同期リトライ 2 回、DLQ 連携）
+- デコード Lambda（Node.js 22、タイムアウト 60 秒 / メモリ 512MB、非同期リトライ 2 回、DLQ 連携）
 - 1st バケットの ObjectCreated → Lambda トリガ
 - 最小権限 IAM（1st バケット read、2nd バケット read/write ＋ 冪等性チェックの存在確認用に 2nd バケットへの `s3:ListBucket`、DLQ への `sqs:SendMessage`、CloudWatch Logs、指定した Secrets Manager Secret のみ）
 - 失敗退避用 DLQ（SQS, 保持 14 日）

@@ -63,7 +63,7 @@ export class SesNotifyStack extends Stack {
     // Decode Lambda. Node.js LTS runtime, explicit timeout and memory sized for
     // the 10MB attachment limit (NFR4.1 / NFR4.2). esbuild bundles TypeScript.
     const decodeFunction = new nodejs.NodejsFunction(this, 'DecodeFunction', {
-      runtime: lambda.Runtime.NODEJS_20_X,
+      runtime: lambda.Runtime.NODEJS_22_X,
       entry: 'src/handler.ts',
       handler: 'handler',
       timeout: Duration.seconds(60),
