@@ -9,11 +9,7 @@ import type { Config } from '../domain/types.js';
 type RawSettings = Record<string, string | undefined>;
 
 // env に直接置く (非機微)。欠損時はデフォルトがなければ fail loud する。
-const REQUIRED_ENV_KEYS = [
-  'TARGET_DOMAIN',
-  'RAW_MAIL_BUCKET',
-  'DECODED_MAIL_BUCKET',
-] as const;
+const REQUIRED_ENV_KEYS = ['TARGET_DOMAIN', 'RAW_MAIL_BUCKET', 'DECODED_MAIL_BUCKET'] as const;
 
 // 秘匿値。SECRETS_MANAGER_SECRET_ID 指定時は Secrets Manager から供給され、
 // 未指定時 (ローカル/テスト) は env から読む。どちらの経路でも最終的に必須。

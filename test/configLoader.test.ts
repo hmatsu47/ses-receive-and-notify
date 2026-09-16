@@ -60,9 +60,9 @@ describe('configLoader (FR4.1 secrets externalized, NEVER hardcoded)', () => {
   });
 
   it('欠損メッセージには欠損キー名のみを含み、秘匿値そのものは含めない', async () => {
-    await expect(loadConfig({ RAW_MAIL_BUCKET: 'raw', DECODED_MAIL_BUCKET: 'decoded' })).rejects.toThrow(
-      /TARGET_DOMAIN.*SLACK_WEBHOOK_URL|SLACK_WEBHOOK_URL/,
-    );
+    await expect(
+      loadConfig({ RAW_MAIL_BUCKET: 'raw', DECODED_MAIL_BUCKET: 'decoded' }),
+    ).rejects.toThrow(/TARGET_DOMAIN.*SLACK_WEBHOOK_URL|SLACK_WEBHOOK_URL/);
   });
 
   it('SECRETS_MANAGER_SECRET_ID 指定時は Secrets Manager から秘匿値を読み env より優先する', async () => {
